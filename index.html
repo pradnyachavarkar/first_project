@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Twitter Client</title>
 	
 </head>
-<body>
-<script type="text/javascript" src="tweet.js" ></script>
-<script type="text/javascript" src="tweetlist.js" ></script>
-<script type="text/javascript" src="filter.js" ></script>
-<script type="text/javascript" src="tweet_controller.js" ></script>
-	<div id="tweetlist">
-		Loading tweets...
-	</div>
+<body onload="init()">
+	<script type="text/javascript" src="js/xhr.js" ></script>
+	<script type="text/javascript" src="js/tweet.js" ></script>
+	<script type="text/javascript" src="js/domUtils.js" ></script>
+	<script type="text/javascript" src="js/tweetlist.js" ></script>
+	<script type="text/javascript" src="js/filter.js" ></script>
+	<script type="text/javascript" src="js/tweetController.js" ></script>
+
+	<ul id="tweetlist">
+	</ul>
 	<div style="width:100%;">
 		<div style="float:left;width:50%;height:100%;">
 			<div id="user_list" style="float:top;height:50%;"> Filter users: <br/> </div>
 			<div id="tag_list" style="float:bottom;height:50%;"> Filter tags: <br/> </div>
-			<button  type ="button" onclick="filterTweets();" value="Filter" >Search </button> 
+			<button  type ="button" id='filter' value="Filter" >Filter </button> 
 		</div>
 		<div style="float:left;width:50%;">
-			<input type="text" id="search_box" size="30" value="" name="search_box" style="display: inline;">
-			<button  type ="button" onclick="loadTweets();" value="Search" >Search </button> 
+			<input type='text' id='search_box' size="30" value="" name="search_box" style="display: inline;">
+			<button  type ='button' id='search' value="Search" >Search </button> 
 		</div>
-	</div>
-	
-	
+	</div>	
 </body>
 </html>

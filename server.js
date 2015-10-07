@@ -18,11 +18,13 @@ http.createServer(function(request, response){
                            });
   var parsedUrl = url.parse(request.url, true);
   console.log(parsedUrl.query);
-  console.log('url = ' + parsedUrl.query['author']);
-  
-  T.get('statuses/user_timeline.json', {screen_name: parsedUrl.query['author'], count: 10},  function(err, item, res) {  
-    response.end(JSON.stringify(item));
-  });
+  if(parsedUrl.query['author'] != 'undefined'){
+    console.log('url = ' + parsedUrl.query['author']);
+    
+    T.get('statuses/user_timeline.json', {screen_name: parsedUrl.query['author'], count: 10},  function(err, item, res) {  
+      response.end(JSON.stringify(item));
+    });
+  }
 }).listen(8080);
 
 console.log('Server running on http://localhost:8080');
