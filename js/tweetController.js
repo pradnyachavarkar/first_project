@@ -2,6 +2,8 @@ var tweetList = new TweetList();
 var xhr = new Xhr();
 var filter = new Filter();
 
+window.onload = init();
+
 function init(){
 	document.getElementById('search').addEventListener('click', displayTweets);
 	document.getElementById('filter').addEventListener('click', filterTweets);

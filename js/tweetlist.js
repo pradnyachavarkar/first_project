@@ -27,25 +27,19 @@ function TweetList(){
 		}
 	}
 
-	this.getUniqueTags = function(user){
-		var tags = [];
-		for(var i = 0; i < tweets[user].length; i++){
-			var tmp = tweets[user][i].getTags();
-			for(var j = 0; j < tmp.length; j++){
-				if(tags.indexOf(tmp[j]) == -1){
-					tags.push(tmp[j]);
-				}
-			}
-		}
-			return tags;
-	}
-
 	this.updateFilterValues =  function(user){
 	    //Update users filter list
 		domUtils.updateCheckList(user, 'user_list');
 		
 		//Update hashtag filter list
-		var tags = this.getUniqueTags(user);
+		var tags = [];
+		for(handle in tweets){
+			_.each(tweets[handle], function(val){
+				tags = _.union(tags, val.getTags());
+			});
+		}
+
+		//var tags = this.getUniqueTags(user);
 		for(var j = 0; j < tags.length; j++){
 			domUtils.updateCheckList(tags[j], 'tag_list');
 		}
