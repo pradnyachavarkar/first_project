@@ -14,7 +14,7 @@ http.createServer(function(request, response){
   response.writeHead(200, { "Content-Type" : "application/json" ,
                              "Access-Control-Allow-Origin": "*",
                              "Access-Control-Allow-Method": "POST, GET, OPTIONS",
-                             "Access-Control-Allow-Headers": "origin, content-type, content-length, accept"
+                             "Access-Control-Allow-Headers": "origin, content-type, content-length, accept, X-Requested-With"
                            });
   var parsedUrl = url.parse(request.url, true);
   console.log(parsedUrl.query);

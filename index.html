@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html>
+	<style type="text/css">
+		@import "dijit/themes/claro/claro.css";
+	</style>
 <head>
 	<title>Twitter Client</title>
 	
 </head>
-<body>
+<body id='mainBody' class="claro">
+	<script>
+        var dojoConfig = {
+            async: true,
+			isDebug: true,
+			parseOnLoad: true,
+			baseUrl: './',
+            packages: [
+				{name: 'dojo', location: 'dojo'},
+				{name: 'dijit', location: 'dijit'},
+				{name: 'app', location:  location.pathname.replace(/\/[^/]+$/, '') + '/app'}
+            ]
+        };
+    </script>
+    <script src="dojo/dojo.js"></script>
+	<script type="text/javascript" src="app/underscore.js" ></script>
 
-	<ul id="tweetlist">
-	</ul>
-	<div style="width:100%;">
-		<div style="float:left;width:50%;height:100%;">
-			<div id="user_list" style="float:top;height:50%;"> Filter users: <br/> </div>
-			<div id="tag_list" style="float:bottom;height:50%;"> Filter tags: <br/> </div>
-			<button  type ="button" id='filter' value="Filter" >Filter </button> 
-		</div>
-		<div style="float:left;width:50%;">
-			<input type='text' id='search_box' size="30" value="" name="search_box" style="display: inline;">
-			<button  type ='button' id='search' value="Search" >Search </button> 
-		</div>
-	</div>
-
-	<script type="text/javascript" src="js/underscore.js" ></script>
-	<script type="text/javascript" src="js/xhr.js" ></script>
-	<script type="text/javascript" src="js/tweet.js" ></script>
-	<script type="text/javascript" src="js/domUtils.js" ></script>
-	<script type="text/javascript" src="js/tweetlist.js" ></script>
-	<script type="text/javascript" src="js/filter.js" ></script>
-	<script type="text/javascript" src="js/tweetController.js" ></script>
-
+	<script>
+        require([
+        	'app/tweetController',
+            'dojo/domReady!'
+        ], function (tweetController){
+        	var t = new tweetController();
+        });
+    </script>
 </body>
 </html>
